@@ -204,7 +204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92223336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.57, y: 73.6, z: -0.051813222}
+  m_LocalPosition: {x: 0.57, y: 8.4, z: -0.051813222}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -274,7 +274,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minImpulseForExplosion: 15
   explosionEffect: {fileID: 2041790678}
-  explosionEffectTime: 0.68
+  explosionEffectTime: 0.5
+  nextEffectTime: 5
+  WonScreen: WonScreen
+  GameOverScreen: GameOver
 --- !u!114 &92223342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,7 +614,7 @@ GameObject:
   - component: {fileID: 882819202}
   m_Layer: 0
   m_Name: Jupiter
-  m_TagString: Untagged
+  m_TagString: Jupiter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

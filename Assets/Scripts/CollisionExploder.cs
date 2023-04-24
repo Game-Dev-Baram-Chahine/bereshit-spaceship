@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /**
  * This component triggers an explosion effect and destroys its object
@@ -16,6 +18,12 @@ public class CollisionExploder : MonoBehaviour
 
     [SerializeField]
     float explosionEffectTime = 0.68f;
+
+    [SerializeField]
+    string wonScreen = "WonScreen";
+
+    [SerializeField]
+    string gameOverScreen = "GameOver";
 
     private Rigidbody2D rb;
 
@@ -53,7 +61,12 @@ public class CollisionExploder : MonoBehaviour
         }
         else if (collision.collider.tag != "Jupiter")
         {
+            StartCoroutine(Explosion());
             Debug.Log(collision.collider.name);
+        }
+        else
+        {
+            SceneManager.LoadScene(wonScreen);
         }
     }
 
@@ -61,6 +74,6 @@ public class CollisionExploder : MonoBehaviour
     {
         explosionEffect.SetActive(true);
         yield return new WaitForSeconds(explosionEffectTime);
-        Destroy(this.gameObject);
+        SceneManager.LoadScene(gameOverScreen);
     }
 }
