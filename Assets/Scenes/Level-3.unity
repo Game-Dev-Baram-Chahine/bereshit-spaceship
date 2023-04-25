@@ -386,9 +386,8 @@ MonoBehaviour:
   minImpulseForExplosion: 15
   explosionEffect: {fileID: 2041790678}
   explosionEffectTime: 0.5
-  nextEffectTime: 2
-  WonScreen: WonScreen
-  GameOverScreen: GameOver
+  wonScreen: WonScreen
+  gameOverScreen: GameOver
 --- !u!114 &92223342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToStartSlowdown: 10
-  thrustForce: 4
+  thrustForce: 15
   torqueForce: 0.15
   noseForce:
     m_Name: Nose Force

@@ -289,8 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf9a02ba8cc93f4086f954f21b8883d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToStartSlowdown: 10
-  thrustForce: 4
+  distanceToStartSlowdown: 15
+  thrustForce: 10
   torqueForce: 0.15
   noseForce:
     m_Name: Nose Force

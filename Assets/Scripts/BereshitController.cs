@@ -81,7 +81,7 @@ public class BereshitController : MonoBehaviour
         }
         if (tail == 1)
         {
-            rb.AddForce(Vector2.down * tail);
+            rb.AddForce(Vector2.down * thrustForce, ForceMode2D.Force);
         }
         Debug.DrawRay(transform.position, Vector2.down * distanceToStartSlowdown, Color.red);
     }
