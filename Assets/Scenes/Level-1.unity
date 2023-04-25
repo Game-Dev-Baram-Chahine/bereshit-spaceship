@@ -275,9 +275,8 @@ MonoBehaviour:
   minImpulseForExplosion: 15
   explosionEffect: {fileID: 2041790678}
   explosionEffectTime: 0.5
-  nextEffectTime: 5
-  WonScreen: WonScreen
-  GameOverScreen: GameOver
+  wonScreen: WonScreen
+  gameOverScreen: GameOver
 --- !u!114 &92223342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
       propertyPath: m_LocalPosition.x
