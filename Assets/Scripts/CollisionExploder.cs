@@ -25,6 +25,15 @@ public class CollisionExploder : MonoBehaviour
     [SerializeField]
     string gameOverScreen = "GameOver";
 
+    [SerializeField]
+    string astroidTag = "Astroid";
+
+    [SerializeField]
+    string planetTag = "Jupiter";
+
+    [SerializeField]
+    int collisionAngle = 5;
+
     private Rigidbody2D rb;
 
     void Start()
@@ -50,22 +59,26 @@ public class CollisionExploder : MonoBehaviour
                 + impulse
                 + " [kg*m/s]"
         );
+        // Check if the collision is also an explosion.
         if (
             impulse > minImpulseForExplosion
-            || angle > 5
-            || angle < -5
-            || collision.collider.tag == "Astroid"
+            || angle > collisionAngle
+            || angle < -collisionAngle
+            || collision.collider.tag == astroidTag
         )
         {
+            // Start the explosion
             StartCoroutine(Explosion());
         }
-        else if (collision.collider.tag != "Jupiter")
+        else if (!checkTag(collision.collider.tag, planetTag))
         {
+            // Start the explosion
             StartCoroutine(Explosion());
             Debug.Log(collision.collider.name);
         }
         else
         {
+            // Go to the "WonScreen" scene.
             SceneManager.LoadScene(wonScreen);
         }
     }

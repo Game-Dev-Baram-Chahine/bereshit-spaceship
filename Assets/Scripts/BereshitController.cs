@@ -11,11 +11,6 @@ using UnityEngine.InputSystem;
 public class BereshitController : MonoBehaviour
 {
     [SerializeField]
-    float distanceToStartSlowdown = 0;
-
-    float dragForceForSlowdown = 0;
-
-    [SerializeField]
     float thrustForce = 10f;
 
     [SerializeField]
@@ -59,30 +54,25 @@ public class BereshitController : MonoBehaviour
     /* To prevent explosion - send a ray to the moon and "drag" the spaceship when the moon is nearby: */
     private void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(
-            origin: transform.position,
-            direction: Vector2.down,
-            distance: Mathf.Infinity
-        );
+        // Get the values of the right and left angle torque inputs.
         float rightAngle = rightAngleTorque.ReadValue<float>();
         float leftAngle = leftAngleTorque.ReadValue<float>();
-        if (rightAngle == 1 || leftAngle == 1)
-        {
-            var impulse =
-                (leftAngle * torqueForce * Mathf.Deg2Rad - rightAngle * torqueForce * Mathf.Deg2Rad)
-                * rb.inertia;
-            rb.AddTorque(impulse, ForceMode2D.Impulse);
-        }
+        // Calculate the impulse.
+        // The impulse is the torque applied to the spaceship.
+        var impulse =
+            (leftAngle * torqueForce * Mathf.Deg2Rad - rightAngle * torqueForce * Mathf.Deg2Rad)
+            * rb.inertia;
+        // Apply the impulse to the spaceship.
+        rb.AddTorque(impulse, ForceMode2D.Impulse);
+
         float nose = noseForce.ReadValue<float>();
         float tail = tailForce.ReadValue<float>();
-        if (nose == 1)
-        {
-            rb.AddForce(transform.up * thrustForce, ForceMode2D.Force);
-        }
-        if (tail == 1)
-        {
-            rb.AddForce(Vector2.down * thrustForce, ForceMode2D.Force);
-        }
-        Debug.DrawRay(transform.position, Vector2.down * distanceToStartSlowdown, Color.red);
+        // Calculate the force applied to the spaceship.
+        // The force is calculated by multiplying the thrust force by the nose and tail values.
+        // The nose value is 1 if the player is pressing the arrow up, and 0 if he is not.
+        // The tail value is 1 if the player is pressing the arrow down, and 0 if he is not.
+        // Apply the force to the spaceship.
+        rb.AddForce(transform.up * thrustForce * nose, ForceMode2D.Force);
+        rb.AddForce(Vector2.down * thrustForce * tail, ForceMode2D.Force);
     }
 }
