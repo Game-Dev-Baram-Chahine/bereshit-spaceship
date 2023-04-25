@@ -70,7 +70,7 @@ public class CollisionExploder : MonoBehaviour
             // Start the explosion
             StartCoroutine(Explosion());
         }
-        else if (!checkTag(collision.collider.tag, planetTag))
+        else if (collision.collider.tag == planetTag)
         {
             // Start the explosion
             StartCoroutine(Explosion());
